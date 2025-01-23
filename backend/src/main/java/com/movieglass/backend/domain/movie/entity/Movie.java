@@ -1,48 +1,49 @@
 package com.movieglass.backend.domain.movie.entity;
 
-import com.movieglass.backend.domain.review.entity.Review;
-import com.movieglass.backend.domain.collection.entity.CollectionMovie;
-import com.movieglass.backend.domain.curation.entity.CurationMovie;
-import com.movieglass.backend.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "Movie")
-public class Movie extends BaseEntity {
+public class Movie {
 
     @Id
-    @Column(name = "KMDb_id")
+    @Column(name = "KMDb_id", nullable = false)
     private String id;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "movie_name")
+    private String movieName;
 
-    @Column(name = "release_date")
-    private String releaseDate;
+    @Column(name = "production_year")
+    private Integer productionYear;
 
-    @Column(name = "genre")
-    private String genre;
+    @Column(name = "production_type")
+    private String productionType;
 
-    @Column(name = "director")
-    private String director;
+    @Column(name = "production_length")
+    private String productionLength;
 
-    @Column(name = "actors")
-    private String actors;
+    @Column(name = "production_genre")
+    private String productionGenre;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "production_country")
+    private String productionCountry;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews;
+    @Column(name = "production_time")
+    private Integer productionTime;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CollectionMovie> collectionMovies;
+    @Column(name = "production_keyword")
+    private String productionKeyword;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CurationMovie> curationMovies;
+    @Column(name = "production_plot")
+    private String productionPlot;
+
+    @Column(name = "production_image")
+    private String productionImage;
+
+    @Column(name = "horizontal_image", length = 255)
+    private String horizontalImage;
 }
