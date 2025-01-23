@@ -2,6 +2,7 @@ package com.movieglass.backend.domain.review.entity;
 
 import com.movieglass.backend.domain.movie.entity.Movie;
 import com.movieglass.backend.domain.user.entity.User;
+import com.movieglass.backend.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 @Table(name = "Review")
-public class Review {
+public class Review extends BaseEntity {
 
     @Id
     @Column(name = "review_id")
