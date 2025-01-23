@@ -3,6 +3,7 @@ package com.movieglass.backend.domain.user.entity;
 import com.movieglass.backend.domain.collection.entity.Collection;
 import com.movieglass.backend.domain.diary.entity.Diary;
 import com.movieglass.backend.domain.review.entity.Review;
+import com.movieglass.backend.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "USER")
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @Column(name = "user_id")

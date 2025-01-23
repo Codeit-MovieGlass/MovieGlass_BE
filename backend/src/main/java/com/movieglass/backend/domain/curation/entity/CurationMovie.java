@@ -1,6 +1,7 @@
 package com.movieglass.backend.domain.curation.entity;
 
 import com.movieglass.backend.domain.movie.entity.Movie;
+import com.movieglass.backend.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "CurationMovie")
-public class CurationMovie {
+public class CurationMovie extends BaseEntity {
 
     @Id
     @ManyToOne
