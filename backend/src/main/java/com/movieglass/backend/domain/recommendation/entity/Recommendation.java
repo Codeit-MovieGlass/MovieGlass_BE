@@ -16,4 +16,10 @@ public class Recommendation extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column(name = "genre")
+    private String genre;
+
+    @Column(name = "weight")
+    private int weight;
 }
