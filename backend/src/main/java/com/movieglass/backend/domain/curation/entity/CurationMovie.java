@@ -1,5 +1,6 @@
 package com.movieglass.backend.domain.curation.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.movieglass.backend.domain.movie.entity.Movie;
 import com.movieglass.backend.global.common.BaseEntity;
 import jakarta.persistence.*;
@@ -12,9 +13,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "CurationMovie")
 public class CurationMovie extends BaseEntity {
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "curation_id", nullable = false)
+    @JsonBackReference
     private Curation curation;
 
     @Id

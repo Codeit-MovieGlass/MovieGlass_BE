@@ -1,5 +1,6 @@
 package com.movieglass.backend.domain.curation.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.movieglass.backend.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,5 +24,6 @@ public class Curation extends BaseEntity {
     private String description;
 
     @OneToMany(mappedBy = "curation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<CurationMovie> curationMovies;
 }
