@@ -15,15 +15,16 @@ import java.math.BigDecimal;
 public class Review extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가 설정
     @Column(name = "review_id")
-    private String id;
+    private Long Id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "KMDb_id", nullable = false)
+    @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
     @Column(name = "rating")
@@ -34,4 +35,20 @@ public class Review extends BaseEntity {
 
     @Column(name = "view_count")
     private int viewCount;
+
+    // 생성자
+    public Review(Movie movie, User user, BigDecimal rating, String comment) {
+        this.movie = movie;
+        this.user = user;
+        this.rating = rating;
+        this.comment = comment;
+        this.viewCount = 0; // 기본 값
+    }
+
+    // 업데이트 메서드
+    public void update(BigDecimal rating, String comment) {
+        this.rating = rating;
+        this.comment = comment;
+    }
+
 }

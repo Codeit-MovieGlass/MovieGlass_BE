@@ -1,8 +1,12 @@
 package com.movieglass.backend.domain.movie.entity;
 
+import com.movieglass.backend.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Collection;
 
 @Getter
 @NoArgsConstructor
@@ -11,8 +15,15 @@ import lombok.NoArgsConstructor;
 public class Movie {
 
     @Id
-    @Column(name = "KMDb_id", nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가 설정
+//    @Column(name = "movie_id")
+    private Long Id;
+//    @Id
+    @Column(name = "KMDb_id")
+    private String kmdbId;
+
+    @Column(name = "TMDb_id")
+    private String tmdbId;
 
     @Column(name = "movie_name")
     private String movieName;
@@ -39,6 +50,7 @@ public class Movie {
     private String productionKeyword;
 
     @Column(name = "production_plot")
+    @Lob
     private String productionPlot;
 
     @Column(name = "production_image")
@@ -46,4 +58,18 @@ public class Movie {
 
     @Column(name = "horizontal_image", length = 255)
     private String horizontalImage;
+
+    @Setter
+    @Column(name = "trailer_url") // 새 필드 추가
+    private String trailerUrl;
+    @OneToMany(mappedBy = "movie")
+    private Collection<Review> review;
+
+    public Collection<Review> getReview() {
+        return review;
+    }
+
+    public void setReview(Collection<Review> review) {
+        this.review = review;
+    }
 }
