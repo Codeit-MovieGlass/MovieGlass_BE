@@ -13,7 +13,7 @@ public class MovieSummaryDto {
 
     public static MovieSummaryDto from(Movie movie) {
         return MovieSummaryDto.builder()
-                .movieId(movie.getKmdbId())
+                .movieId(movie.getId().toString())
                 .title(movie.getMovieName())
                 .posterUrl(movie.getProductionImage())
                 .build();

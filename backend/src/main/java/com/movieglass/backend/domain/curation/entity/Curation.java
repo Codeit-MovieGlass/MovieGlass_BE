@@ -23,6 +23,9 @@ public class Curation extends BaseEntity {
     @Column(name = "curation_description")
     private String description;
 
+    @Column(name = "user_id", nullable = true)
+    private String userId;
+
     @OneToMany(mappedBy = "curation", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<CurationMovie> curationMovies;

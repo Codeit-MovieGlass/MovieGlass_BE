@@ -5,7 +5,6 @@ import com.movieglass.backend.domain.home.dto.CurationMoviesDto;
 import com.movieglass.backend.domain.movie.repository.MovieRepository;
 import com.movieglass.backend.domain.home.dto.HomeResponseDto;
 import com.movieglass.backend.domain.movie.entity.Movie;
-import com.movieglass.backend.domain.curation.entity.Curation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +40,7 @@ public class HomeServiceImpl implements HomeService {
                 .toList();
 
         // 기타 큐레이션 조회
-        List<CurationMoviesDto> otherCurations = curationRepository.findByDescription("other").stream()
+        List<CurationMoviesDto> otherCurations = curationRepository.findByDescription("other").stream() // TODO : 사용자 맞춤 큐레이션 조회
                 .map(CurationMoviesDto::from)
                 .toList();
 

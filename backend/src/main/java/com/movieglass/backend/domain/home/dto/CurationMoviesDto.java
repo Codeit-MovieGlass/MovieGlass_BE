@@ -12,12 +12,14 @@ import java.util.stream.Collectors;
 public class CurationMoviesDto {
     private final String curationId;
     private final String curationName;
+    private final String curationDescription;
     private final List<MovieSummaryDto> movies;
 
     public static CurationMoviesDto from(Curation curation) {
         return CurationMoviesDto.builder()
                 .curationId(curation.getId())
                 .curationName(curation.getName())
+                .curationDescription(curation.getDescription())
                 .movies(curation.getCurationMovies().stream()
                         .map(curationMovie -> MovieSummaryDto.from(curationMovie.getMovie()))
                         .collect(Collectors.toList()))
