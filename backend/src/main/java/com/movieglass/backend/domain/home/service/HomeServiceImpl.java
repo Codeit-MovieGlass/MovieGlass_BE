@@ -2,14 +2,17 @@ package com.movieglass.backend.domain.home.service;
 
 import com.movieglass.backend.domain.curation.repository.CurationRepository;
 import com.movieglass.backend.domain.home.dto.CurationMoviesDto;
+import com.movieglass.backend.domain.home.dto.response.CurationShuffleResponseDto;
 import com.movieglass.backend.domain.movie.repository.MovieRepository;
-import com.movieglass.backend.domain.home.dto.HomeResponseDto;
+import com.movieglass.backend.domain.home.dto.response.HomeResponseDto;
 import com.movieglass.backend.domain.movie.entity.Movie;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -47,5 +50,18 @@ public class HomeServiceImpl implements HomeService {
         return HomeResponseDto.of(top10Movies, weatherCurations, otherCurations);
     }
 
+
+    public CurationShuffleResponseDto getRandomCurations() {
+        long count = curationRepository.count();
+        int randomPage = new Random().nextInt((int) count / 3); // 랜덤 페이지 선택
+
+        List<CurationMoviesDto> curations = curationRepository
+                .findAll(PageRequest.of(randomPage, 3))
+                .stream()
+                .map(CurationMoviesDto::from)
+                .toList();
+
+        return CurationShuffleResponseDto.of(curations);
+    }
 }
 

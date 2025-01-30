@@ -1,5 +1,7 @@
-package com.movieglass.backend.domain.home.dto;
+package com.movieglass.backend.domain.home.dto.response;
 
+import com.movieglass.backend.domain.home.dto.CurationMoviesDto;
+import com.movieglass.backend.domain.home.dto.MovieDto;
 import com.movieglass.backend.domain.movie.entity.Movie;
 import lombok.Builder;
 import lombok.Getter;
