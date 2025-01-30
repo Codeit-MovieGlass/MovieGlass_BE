@@ -1,6 +1,7 @@
 package com.movieglass.backend.domain.home.controller;
 
-import com.movieglass.backend.domain.home.dto.HomeResponseDto;
+import com.movieglass.backend.domain.home.dto.response.CurationShuffleResponseDto;
+import com.movieglass.backend.domain.home.dto.response.HomeResponseDto;
 import com.movieglass.backend.domain.home.dto.response.MovieSearchResponseDto;
 import com.movieglass.backend.domain.home.service.HomeService;
 import com.movieglass.backend.domain.home.service.MovieSearchService;
@@ -33,5 +34,11 @@ public class HomeController {
     public ApiResponse<MovieSearchResponseDto> searchMovies(@RequestParam("query") String query) {
         MovieSearchResponseDto searchResults = movieSearchService.searchMovies(query);
         return ApiResponse.success("영화 검색 결과를 성공적으로 가져왔습니다.", searchResults);
+    }
+
+    @GetMapping("/curations/shuffle")
+    public ApiResponse<CurationShuffleResponseDto> shuffleCurations() {
+        CurationShuffleResponseDto shuffleResponse = homeService.getRandomCurations();
+        return ApiResponse.success("큐레이션 셔플 데이터를 성공적으로 가져왔습니다.", shuffleResponse);
     }
 }
