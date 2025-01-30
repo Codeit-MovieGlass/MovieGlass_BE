@@ -19,7 +19,11 @@ public class CurationMovie extends BaseEntity {
     private Curation curation;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
     @ManyToOne
-    @JoinColumn(name = "KMDb_id", nullable = false)
+    @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 }

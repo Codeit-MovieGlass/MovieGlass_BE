@@ -7,4 +7,5 @@ import java.util.List;
 
 @Repository
 public interface CurationRepository extends JpaRepository<Curation, String> {
-    List<Curation> findByDescription(String description);}
+    List<Curation> findByDescription(String description);
+}
