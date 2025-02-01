@@ -17,7 +17,7 @@ public class ReviewConverter {
     public ReviewResponseDto toDto(Review review) {
         return new ReviewResponseDto(
                 review.getId(),
-                review.getUser().getId(),
+                Long.parseLong(review.getUser().getId()),
                 review.getRating(),
                 review.getComment(),
                 review.getViewCount()

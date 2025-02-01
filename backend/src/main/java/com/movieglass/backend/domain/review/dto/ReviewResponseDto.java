@@ -10,10 +10,17 @@ import java.math.BigDecimal;
 @NoArgsConstructor // 기본 생성자
 @AllArgsConstructor // 모든 필드를 포함한 생성자
 public class ReviewResponseDto {
-
+    private Long id;
     private Long reviewId;
     private Long  userId;
     private BigDecimal rating;
     private String comment;
     private int viewCount;
+    public ReviewResponseDto(Long id, Long userId, BigDecimal rating, String comment, int viewCount) {
+        this.id = id;
+        this.userId = userId;
+        this.rating = rating;
+        this.comment = comment;
+        this.viewCount = viewCount;
+    }
 }
